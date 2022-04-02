@@ -1,7 +1,7 @@
 import { Layout, Menu } from 'antd'
 import { useEffect, useState } from 'react'
 import { AlignLeftOutlined, ClockCircleOutlined, HomeOutlined } from '@ant-design/icons'
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
 import './App.css'
 import { RouteOpts } from './types/index'
@@ -37,7 +37,11 @@ function App () {
   const location = useLocation()
 
   useEffect(() => {
-    setCurrent(location.pathname.split('/')[1] || 'all')
+    if (location.pathname === '/') {
+      setCurrent('all')
+    } else {
+      setCurrent(location.pathname.split('/')[1])
+    }
   }, [location])
 
   const handleClick = (e: any) => {
@@ -47,7 +51,7 @@ function App () {
       navigate('/')
       break
     default:
-      navigate(`/${e.key}`)
+      navigate(e.key)
     }
   }
 
@@ -94,6 +98,7 @@ function App () {
               />
             )
           })}
+          <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
       </Layout.Content>
     </Layout>
