@@ -1,6 +1,6 @@
 import { Layout, Menu } from 'antd'
 import { useEffect, useState } from 'react'
-import { AlignLeftOutlined, ClockCircleOutlined, HomeOutlined } from '@ant-design/icons'
+import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined } from '@ant-design/icons'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
 import './App.css'
@@ -9,36 +9,50 @@ import { RouteOpts } from './types/index'
 import Index from './pages/index'
 import Json from './pages/json'
 import Time from './pages/time'
+import Base64 from './pages/base64'
 
 const routes: RouteOpts[] = [
   {
     title: '首页',
     path: '/',
     component: Index,
-    icon: HomeOutlined
+    icon: HomeOutlined,
+    key: 'home'
   },
   {
     title: 'JSON格式化',
     path: '/json',
     component: Json,
-    icon: AlignLeftOutlined
+    icon: AlignLeftOutlined,
+    group: '格式类',
+    key: 'json'
   },
   {
     title: '时间转换',
     path: '/time',
     component: Time,
-    icon: ClockCircleOutlined
+    icon: ClockCircleOutlined,
+    group: '转换类',
+    key: 'time'
+  },
+  {
+    title: 'Base64',
+    path: '/base64',
+    component: Base64,
+    icon: ContainerOutlined,
+    group: '编码/解码类',
+    key: 'base64'
   }
 ]
 
 function App () {
-  const [current, setCurrent] = useState('all')
+  const [current, setCurrent] = useState('home')
   const navigate = useNavigate()
   const location = useLocation()
 
   useEffect(() => {
     if (location.pathname === '/') {
-      setCurrent('all')
+      setCurrent('home')
     } else {
       setCurrent(location.pathname.split('/')[1])
     }
@@ -47,12 +61,50 @@ function App () {
   const handleClick = (e: any) => {
     setCurrent(e.key)
     switch (e.key) {
-    case 'all':
-      navigate('/')
-      break
-    default:
-      navigate(e.key)
+      case 'home':
+        navigate('/')
+        break
+      default:
+        navigate(e.key)
     }
+  }
+
+  const renderMenu = () => {
+    const m: Record<string, RouteOpts[]> = {}
+    routes.forEach(r => {
+      let g = r.group
+      if (!g) {
+        g = '/'
+      }
+      if (m[g]) {
+        m[g].push(r)
+      } else {
+        m[g] = [r]
+      }
+    })
+
+    return Object.keys(m).map(g => {
+      const title = g
+      const rs = m[g]
+      if (title === '/') {
+        const r = rs[0]
+        return (
+          <Menu.Item key={r.key} icon={<r.icon />}>
+            {r.title}
+          </Menu.Item>
+        )
+      } else {
+        return (
+          <Menu.ItemGroup title={title} key={title}>
+            {rs.map(r => (
+              <Menu.Item key={r.key} icon={<r.icon />}>
+                {r.title}
+              </Menu.Item>
+            ))}
+          </Menu.ItemGroup>
+        )
+      }
+    })
   }
 
   return (
@@ -63,19 +115,7 @@ function App () {
           selectedKeys={[current]}
           mode="vertical"
         >
-          <Menu.Item key="all" icon={<HomeOutlined />}>
-            首页
-          </Menu.Item>
-          <Menu.ItemGroup title="转换类">
-            <Menu.Item key="time" icon={<ClockCircleOutlined />}>
-              时间
-            </Menu.Item>
-          </Menu.ItemGroup>
-          <Menu.ItemGroup title="格式类">
-            <Menu.Item key="json" icon={<AlignLeftOutlined />}>
-              JSON
-            </Menu.Item>
-          </Menu.ItemGroup>
+          { renderMenu() }
         </Menu>
       </Layout.Sider>
       <Layout.Content style={{ backgroundColor: '#fff' }}>
