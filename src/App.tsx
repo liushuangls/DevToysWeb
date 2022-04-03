@@ -1,6 +1,6 @@
 import { Layout, Menu } from 'antd'
 import { useEffect, useState } from 'react'
-import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined } from '@ant-design/icons'
+import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined } from '@ant-design/icons'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
 import './App.css'
@@ -10,6 +10,7 @@ import Index from './pages/index'
 import Json from './pages/json'
 import Time from './pages/time'
 import Base64 from './pages/base64'
+import Qrcode from './pages/qrcode'
 
 const routes: RouteOpts[] = [
   {
@@ -42,6 +43,14 @@ const routes: RouteOpts[] = [
     icon: ContainerOutlined,
     group: '编码/解码类',
     key: 'base64'
+  },
+  {
+    title: '二维码',
+    path: '/qrcode',
+    component: Qrcode,
+    icon: QrcodeOutlined,
+    group: '图像类',
+    key: 'qrcode'
   }
 ]
 
