@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#waifu {
+  right: 0;
+  left: auto;
+  z-index: 1;
+}
+  
+#waifu-tool {
+  left: 10px;
+  right: auto; 
+}
