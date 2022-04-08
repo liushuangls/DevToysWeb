@@ -1,4 +1,4 @@
-import { Button, Card, Input, Select, Space } from 'antd'
+import { Button, Card, Input, message, Select, Space } from 'antd'
 import { format, formatISO, getUnixTime } from 'date-fns'
 import { memo, useState } from 'react'
 
@@ -9,6 +9,7 @@ const defaultFormat = 'yyyy-MM-dd HH:mm:ss'
 function Time () {
   const [date, setDate] = useState(new Date())
   const [unit, setUnit] = useState('s')
+  const [dateStr, setDateStr] = useState('')
 
   const handleInput = (e: any) => {
     const val = Number(e.target.value)
@@ -38,6 +39,18 @@ function Time () {
     return `${y}-${M}-${d} ${h}:${m}:${s}`
   }
 
+  const convertDateStr = () => {
+    if (!dateStr) {
+      return
+    }
+    const d = new Date(dateStr)
+    if (isNaN(d.getTime())) {
+      message.error('日期格式错误')
+      return
+    }
+    setDate(d)
+  }
+
   return (
     <div className="page-time">
       <Space
@@ -58,10 +71,21 @@ function Time () {
               <Select.Option value='ms'>ms</Select.Option>
             </Select>
           </Input.Group>
-          <div style={{ paddingTop: '10px' }}>
+          <div style={{ padding: '10px 0' }}>
             <Button type="primary" onClick={() => setDate(new Date())} size={'small'}>
               now
             </Button>
+          </div>
+          <div>
+            时间字符串：
+            <Input.Group compact style={{ marginTop: '10px' }}>
+              <Input
+                style={{ width: 'calc(100% - 200px)' }}
+                value={dateStr}
+                onChange={(e) => setDateStr(e.target.value)}
+              />
+              <Button onClick={convertDateStr}>转换</Button>
+            </Input.Group>
           </div>
         </Card>
         <Card>
