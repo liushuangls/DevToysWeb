@@ -4,7 +4,7 @@ import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
 import './App.css'
-import { RouteOpts } from './types/index'
+import { RouteOpts } from './types'
 
 import Index from './pages/index'
 import Json from './pages/json'
@@ -12,6 +12,7 @@ import Time from './pages/time'
 import Base64 from './pages/base64'
 import URL from './pages/url'
 import Html from './pages/html'
+import JWT from './pages/jwt'
 import Qrcode from './pages/qrcode'
 
 const routes: RouteOpts[] = [
@@ -53,6 +54,13 @@ const routes: RouteOpts[] = [
     title: 'HTML',
     path: '/html',
     component: Html,
+    icon: ContainerOutlined,
+    group: '编码/解码类'
+  },
+  {
+    title: 'JWT',
+    path: '/jwt',
+    component: JWT,
     icon: ContainerOutlined,
     group: '编码/解码类'
   },
