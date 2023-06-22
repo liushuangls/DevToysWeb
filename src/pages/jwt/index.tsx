@@ -14,7 +14,7 @@ function JWT () {
     try {
       const header = JSON.stringify(jwt_decode(e.target.value, { header: true }), null, 2)
       const payload = JSON.stringify(jwt_decode(e.target.value), null, 2)
-      val = `Header:\n${header}\n\nPayload:\n${payload}`
+      val = `${header}\n\n${payload}`
     } catch (err: any) {
       val = err.toString()
     }
