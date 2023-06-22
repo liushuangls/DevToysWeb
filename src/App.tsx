@@ -11,6 +11,7 @@ import Json from './pages/json'
 import Time from './pages/time'
 import Base64 from './pages/base64'
 import URL from './pages/url'
+import Html from './pages/html'
 import Qrcode from './pages/qrcode'
 
 const routes: RouteOpts[] = [
@@ -18,48 +19,49 @@ const routes: RouteOpts[] = [
     title: '首页',
     path: '/',
     component: Index,
-    icon: HomeOutlined,
-    key: 'home'
+    icon: HomeOutlined
   },
   {
     title: 'JSON格式化',
     path: '/json',
     component: Json,
     icon: AlignLeftOutlined,
-    group: '格式类',
-    key: 'json'
+    group: '格式类'
   },
   {
     title: '时间转换',
     path: '/time',
     component: Time,
     icon: ClockCircleOutlined,
-    group: '转换类',
-    key: 'time'
+    group: '转换类'
   },
   {
     title: 'Base64',
     path: '/base64',
     component: Base64,
     icon: ContainerOutlined,
-    group: '编码/解码类',
-    key: 'base64'
+    group: '编码/解码类'
   },
   {
     title: 'URL',
     path: '/URL',
     component: URL,
     icon: ContainerOutlined,
-    group: '编码/解码类',
-    key: 'url'
+    group: '编码/解码类'
+  },
+  {
+    title: 'HTML',
+    path: '/html',
+    component: Html,
+    icon: ContainerOutlined,
+    group: '编码/解码类'
   },
   {
     title: '二维码',
     path: '/qrcode',
     component: Qrcode,
     icon: QrcodeOutlined,
-    group: '图像类',
-    key: 'qrcode'
+    group: '图像类'
   }
 ]
 
@@ -107,7 +109,7 @@ function App () {
       if (title === '/') {
         const r = rs[0]
         return (
-          <Menu.Item key={r.key} icon={<r.icon />}>
+          <Menu.Item key={r.path} icon={<r.icon />}>
             {r.title}
           </Menu.Item>
         )
@@ -115,7 +117,7 @@ function App () {
         return (
           <Menu.ItemGroup title={title} key={title}>
             {rs.map(r => (
-              <Menu.Item key={r.key} icon={<r.icon />}>
+              <Menu.Item key={r.path} icon={<r.icon />}>
                 {r.title}
               </Menu.Item>
             ))}
