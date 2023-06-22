@@ -1,6 +1,6 @@
 import { Layout, Menu } from 'antd'
 import { useEffect, useState } from 'react'
-import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined } from '@ant-design/icons'
+import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined, LinkOutlined, Html5Outlined, UserOutlined } from '@ant-design/icons'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
 import './App.css'
@@ -47,21 +47,21 @@ const routes: RouteOpts[] = [
     title: 'URL',
     path: '/URL',
     component: URL,
-    icon: ContainerOutlined,
+    icon: LinkOutlined,
     group: '编码/解码类'
   },
   {
     title: 'HTML',
     path: '/html',
     component: Html,
-    icon: ContainerOutlined,
+    icon: Html5Outlined,
     group: '编码/解码类'
   },
   {
     title: 'JWT',
     path: '/jwt',
     component: JWT,
-    icon: ContainerOutlined,
+    icon: UserOutlined,
     group: '编码/解码类'
   },
   {
