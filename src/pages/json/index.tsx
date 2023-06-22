@@ -25,7 +25,7 @@ function Json () {
         <Col span={12} style={{ padding: '10px' }}>
           <Input.TextArea
             onChange={(e) => renderJson(e.target.value, indent)}
-            placeholder="请输入json字符串"
+            placeholder="json content"
             showCount={true}
             style={{ height: '90vh' }}
           >
@@ -34,10 +34,11 @@ function Json () {
         <Col span={12} style={{ padding: '10px' }}>
           <Row justify='start' align='middle'>
             <Col span={6}>
-              缩进：
+              indent:
               <Select
                 defaultValue={indent}
                 onSelect={changeIndent}
+                style={{ marginLeft: '10px' }}
               >
                 <Select.Option value={2}>2</Select.Option>
                 <Select.Option value={4}>4</Select.Option>

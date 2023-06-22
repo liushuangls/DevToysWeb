@@ -17,59 +17,59 @@ import Qrcode from './pages/qrcode'
 
 const routes: RouteOpts[] = [
   {
-    title: '首页',
+    title: 'All tools',
     path: '/',
     component: Index,
     icon: HomeOutlined
   },
   {
-    title: 'JSON格式化',
+    title: 'JSON',
     path: '/json',
     component: Json,
     icon: AlignLeftOutlined,
-    group: '格式类'
+    group: 'Formatters'
   },
   {
-    title: '时间转换',
+    title: 'Time',
     path: '/time',
     component: Time,
     icon: ClockCircleOutlined,
-    group: '转换类'
+    group: 'Converters'
   },
   {
     title: 'Base64',
     path: '/base64',
     component: Base64,
     icon: ContainerOutlined,
-    group: '编码/解码类'
+    group: 'Encoders/Decoders'
   },
   {
     title: 'URL',
-    path: '/URL',
+    path: '/url',
     component: URL,
     icon: LinkOutlined,
-    group: '编码/解码类'
+    group: 'Encoders/Decoders'
   },
   {
     title: 'HTML',
     path: '/html',
     component: Html,
     icon: Html5Outlined,
-    group: '编码/解码类'
+    group: 'Encoders/Decoders'
   },
   {
     title: 'JWT',
     path: '/jwt',
     component: JWT,
     icon: UserOutlined,
-    group: '编码/解码类'
+    group: 'Encoders/Decoders'
   },
   {
-    title: '二维码',
+    title: 'QR Code',
     path: '/qrcode',
     component: Qrcode,
     icon: QrcodeOutlined,
-    group: '图像类'
+    group: 'Graphic'
   }
 ]
 

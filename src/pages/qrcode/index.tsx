@@ -36,18 +36,18 @@ function QrCode () {
     <div className="page-qrcode">
       <Card>
         <div>
-          输入：
+          Text:
           <Input value={str} onChange={handleChange} />
         </div>
         <div style={{ margin: '20px 0' }}>
-          二维码大小（128-512）：
+          Size(128-512)：
           <Input.Group compact>
             <Input ref={sizeEl} defaultValue={size} style={{ width: '200px' }} />
             <Button onClick={handleSizeChange}>save</Button>
           </Input.Group>
         </div>
         <div>
-          <Button onClick={exportQrCode}>导出二维码</Button>
+          <Button onClick={exportQrCode}>export QR Code</Button>
         </div>
       </Card>
       <Card>
@@ -59,9 +59,7 @@ function QrCode () {
                 size={size}
               />
             )
-            : (
-              null
-            )
+            : null
         }
       </Card>
     </div>

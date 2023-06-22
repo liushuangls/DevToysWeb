@@ -25,7 +25,7 @@ function JWT () {
     <div className="page-base64">
       <Row>
         <Col span={12} style={{ padding: '10px' }}>
-          JWT密钥： <CopyToClipboard value={raw} />
+          Encoded: <CopyToClipboard value={raw} />
           <Input.TextArea
             style={{ height: '90vh' }}
             value={raw}
@@ -33,7 +33,7 @@ function JWT () {
           />
         </Col>
         <Col span={12} style={{ padding: '10px' }}>
-          内容： <CopyToClipboard value={encoded} />
+          Decoded: <CopyToClipboard value={encoded} />
           <Input.TextArea
             style={{ height: '90vh' }}
             value={encoded}

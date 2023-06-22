@@ -11,7 +11,7 @@ interface CopyProps {
 const CopyToClipboard: React.FC<CopyProps> = ({ value }) => {
   const handleClick = () => {
     copyToClipboard(value).then(() => {
-      message.success('复制成功')
+      message.success('copy success')
     }).catch((e) => {
       message.error(e)
     })

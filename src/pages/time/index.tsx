@@ -45,7 +45,7 @@ function Time () {
     }
     const d = new Date(dateStr)
     if (isNaN(d.getTime())) {
-      message.error('日期格式错误')
+      message.error('invalid format')
       return
     }
     setDate(d)
@@ -59,7 +59,7 @@ function Time () {
         style={{ minWidth: '500px', padding: '20px' }}
       >
         <Card>
-          Unix时间戳:
+          Unix timestamp:
           <Input.Group compact style={{ marginTop: '10px' }}>
             <Input
               style={{ width: 'calc(100% - 200px)' }}
@@ -77,23 +77,23 @@ function Time () {
             </Button>
           </div>
           <div>
-            时间字符串：
+            time string:
             <Input.Group compact style={{ marginTop: '10px' }}>
               <Input
                 style={{ width: 'calc(100% - 200px)' }}
                 value={dateStr}
                 onChange={(e) => setDateStr(e.target.value)}
               />
-              <Button onClick={convertDateStr}>转换</Button>
+              <Button onClick={convertDateStr}>convert</Button>
             </Input.Group>
           </div>
         </Card>
         <Card>
-          本地时间: {format(date, defaultFormat)}
+          local time: {format(date, defaultFormat)}
           <CopyToClipboard value={format(date, defaultFormat)} />
         </Card>
         <Card>
-          UTC时间: {getUTCStr()}
+          UTC time: {getUTCStr()}
           <CopyToClipboard value={getUTCStr()} />
         </Card>
         <Card>

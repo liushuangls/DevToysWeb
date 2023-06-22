@@ -25,7 +25,7 @@ function Html () {
     <div className="page-base64">
       <Row>
         <Col span={12} style={{ padding: '10px' }}>
-          解码： <CopyToClipboard value={raw} />
+          decoded: <CopyToClipboard value={raw} />
           <Input.TextArea
             style={{ height: '90vh' }}
             value={raw}
@@ -33,7 +33,7 @@ function Html () {
           />
         </Col>
         <Col span={12} style={{ padding: '10px' }}>
-          编码： <CopyToClipboard value={encoded} />
+          encoded: <CopyToClipboard value={encoded} />
           <Input.TextArea
             style={{ height: '90vh' }}
             value={encoded}

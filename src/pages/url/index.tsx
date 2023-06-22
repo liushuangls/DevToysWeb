@@ -24,7 +24,7 @@ function Url () {
     <div className="page-base64">
       <Row>
         <Col span={12} style={{ padding: '10px' }}>
-          解码： <CopyToClipboard value={raw} />
+          encoded: <CopyToClipboard value={raw} />
           <Input.TextArea
             style={{ height: '90vh' }}
             value={raw}
@@ -32,7 +32,7 @@ function Url () {
           />
         </Col>
         <Col span={12} style={{ padding: '10px' }}>
-          编码： <CopyToClipboard value={encoded} />
+          decoded: <CopyToClipboard value={encoded} />
           <Input.TextArea
             style={{ height: '90vh' }}
             value={encoded}
