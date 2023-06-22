@@ -79,22 +79,11 @@ function App () {
   const location = useLocation()
 
   useEffect(() => {
-    if (location.pathname === '/') {
-      setCurrent('home')
-    } else {
-      setCurrent(location.pathname.split('/')[1])
-    }
+    setCurrent(location.pathname)
   }, [location])
 
   const handleClick = (e: any) => {
-    setCurrent(e.key)
-    switch (e.key) {
-      case 'home':
-        navigate('/')
-        break
-      default:
-        navigate(e.key)
-    }
+    navigate(e.key)
   }
 
   const renderMenu = () => {
