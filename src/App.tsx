@@ -10,6 +10,7 @@ import Index from './pages/index'
 import Json from './pages/json'
 import Time from './pages/time'
 import Base64 from './pages/base64'
+import URL from './pages/url'
 import Qrcode from './pages/qrcode'
 
 const routes: RouteOpts[] = [
@@ -43,6 +44,14 @@ const routes: RouteOpts[] = [
     icon: ContainerOutlined,
     group: '编码/解码类',
     key: 'base64'
+  },
+  {
+    title: 'URL',
+    path: '/URL',
+    component: URL,
+    icon: ContainerOutlined,
+    group: '编码/解码类',
+    key: 'url'
   },
   {
     title: '二维码',
