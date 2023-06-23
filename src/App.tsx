@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Layout, Menu, MenuProps } from 'antd'
-import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined, LinkOutlined, Html5Outlined, UserOutlined, BgColorsOutlined } from '@ant-design/icons'
+import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined, LinkOutlined, Html5Outlined, UserOutlined, BgColorsOutlined, FieldStringOutlined } from '@ant-design/icons'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
 import './App.css'
@@ -15,6 +15,7 @@ import Html from './pages/html'
 import JWT from './pages/jwt'
 import Qrcode from './pages/qrcode'
 import ColorPick from './pages/color'
+import RegexTester from './pages/regex'
 
 const routes: RouteOpts[] = [
   {
@@ -29,6 +30,13 @@ const routes: RouteOpts[] = [
     component: Json,
     icon: <AlignLeftOutlined/>,
     group: 'Formatters'
+  },
+  {
+    title: 'Regex Tester',
+    path: '/regex',
+    component: RegexTester,
+    icon: <FieldStringOutlined />,
+    group: 'Text'
   },
   {
     title: 'Time',
