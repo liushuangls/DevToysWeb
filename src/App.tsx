@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Layout, Menu, MenuProps } from 'antd'
-import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined, LinkOutlined, Html5Outlined, UserOutlined, BgColorsOutlined, FieldStringOutlined } from '@ant-design/icons'
+import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined, LinkOutlined, Html5Outlined, UserOutlined, BgColorsOutlined, FieldStringOutlined, NodeIndexOutlined } from '@ant-design/icons'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
 import './App.css'
@@ -16,6 +16,7 @@ import JWT from './pages/jwt'
 import Qrcode from './pages/qrcode'
 import ColorPick from './pages/color'
 import RegexTester from './pages/regex'
+import Hash from './pages/hash'
 
 const routes: RouteOpts[] = [
   {
@@ -23,20 +24,6 @@ const routes: RouteOpts[] = [
     path: '/',
     component: Index,
     icon: <HomeOutlined/>
-  },
-  {
-    title: 'JSON',
-    path: '/json',
-    component: Json,
-    icon: <AlignLeftOutlined/>,
-    group: 'Formatters'
-  },
-  {
-    title: 'Regex Tester',
-    path: '/regex',
-    component: RegexTester,
-    icon: <FieldStringOutlined />,
-    group: 'Text'
   },
   {
     title: 'Time',
@@ -72,6 +59,27 @@ const routes: RouteOpts[] = [
     component: JWT,
     icon: <UserOutlined/>,
     group: 'Encoders/Decoders'
+  },
+  {
+    title: 'JSON',
+    path: '/json',
+    component: Json,
+    icon: <AlignLeftOutlined/>,
+    group: 'Formatters'
+  },
+  {
+    title: 'Hash',
+    path: '/hash',
+    component: Hash,
+    icon: <NodeIndexOutlined />,
+    group: 'Generators'
+  },
+  {
+    title: 'Regex Tester',
+    path: '/regex',
+    component: RegexTester,
+    icon: <FieldStringOutlined />,
+    group: 'Text'
   },
   {
     title: 'QR Code',
