@@ -1,5 +1,5 @@
 import { Button, Card, Input, message, Space } from 'antd'
-import { memo, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { QRCodeCanvas } from 'qrcode.react'
 import { saveAs } from 'file-saver'
 
@@ -66,4 +66,4 @@ function QrCode () {
   )
 }
 
-export default memo(QrCode)
+export default QrCode

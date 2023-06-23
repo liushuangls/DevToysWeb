@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Layout, Menu, MenuProps } from 'antd'
-import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined, LinkOutlined, Html5Outlined, UserOutlined } from '@ant-design/icons'
+import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined, LinkOutlined, Html5Outlined, UserOutlined, BgColorsOutlined } from '@ant-design/icons'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
 import './App.css'
@@ -14,6 +14,7 @@ import URL from './pages/url'
 import Html from './pages/html'
 import JWT from './pages/jwt'
 import Qrcode from './pages/qrcode'
+import ColorPick from './pages/color'
 
 const routes: RouteOpts[] = [
   {
@@ -69,6 +70,13 @@ const routes: RouteOpts[] = [
     path: '/qrcode',
     component: Qrcode,
     icon: <QrcodeOutlined/>,
+    group: 'Graphic'
+  },
+  {
+    title: 'Color Picker',
+    path: '/color',
+    component: ColorPick,
+    icon: <BgColorsOutlined />,
     group: 'Graphic'
   }
 ]

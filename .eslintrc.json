@@ -17,11 +17,13 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "unused-imports"
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
         "indent": "off",
-        "@typescript-eslint/indent": ["error", 2]
+        "@typescript-eslint/indent": ["error", 2],
+        "unused-imports/no-unused-imports": "error"
     }
 }

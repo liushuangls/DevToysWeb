@@ -1,6 +1,6 @@
 import { Button, Card, Input, message, Select, Space } from 'antd'
 import { format, formatISO, getUnixTime } from 'date-fns'
-import { memo, useState } from 'react'
+import { useState } from 'react'
 
 import CopyToClipboard from '../../components/copy'
 
@@ -105,4 +105,4 @@ function Time () {
   )
 }
 
-export default memo(Time)
+export default Time

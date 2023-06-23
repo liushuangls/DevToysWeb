@@ -1,5 +1,5 @@
 import { Col, Input, Row } from 'antd'
-import { memo, useState } from 'react'
+import { useState } from 'react'
 import CopyToClipboard from '../../components/copy'
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode'
@@ -44,4 +44,4 @@ function JWT () {
   )
 }
 
-export default memo(JWT)
+export default JWT

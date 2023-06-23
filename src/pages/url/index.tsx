@@ -1,5 +1,5 @@
 import { Col, Input, Row } from 'antd'
-import { memo, useState } from 'react'
+import { useState } from 'react'
 import CopyToClipboard from '../../components/copy'
 
 function Url () {
@@ -44,4 +44,4 @@ function Url () {
   )
 }
 
-export default memo(Url)
+export default Url

@@ -1,5 +1,5 @@
 import { Col, Input, Row, Select } from 'antd'
-import { memo, useState } from 'react'
+import { useState } from 'react'
 import CopyToClipboard from '../../components/copy'
 
 function Json () {
@@ -63,4 +63,4 @@ function Json () {
   )
 }
 
-export default memo(Json)
+export default Json

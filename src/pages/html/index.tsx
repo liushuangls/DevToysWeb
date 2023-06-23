@@ -1,5 +1,5 @@
 import { Col, Input, Row } from 'antd'
-import { memo, useState } from 'react'
+import { useState } from 'react'
 import CopyToClipboard from '../../components/copy'
 import _ from 'lodash'
 
@@ -45,4 +45,4 @@ function Html () {
   )
 }
 
-export default memo(Html)
+export default Html

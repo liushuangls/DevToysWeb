@@ -1,5 +1,5 @@
 import { Card } from 'antd'
-import React, { memo } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { RouteOpts } from '../../types'
@@ -40,4 +40,4 @@ const Index: React.FC<Props> = ({ routesOpts }) => {
   )
 }
 
-export default memo(Index)
+export default Index
