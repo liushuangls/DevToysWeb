@@ -18,7 +18,7 @@ function RegexTester () {
   const [matchList, setMatchList] = useState<RegExpMatchArray[]>([])
 
   const handleTextChange = (e: any) => {
-    setText(e.target.val)
+    setText(e.target.value)
   }
 
   const handleRegChange = (e: any) => {
@@ -39,7 +39,7 @@ function RegexTester () {
       setMatchList(matchList)
     } catch (error) {
       setRegStatus('error')
-      // console.log(error)
+      console.log(error)
     }
   }
 
