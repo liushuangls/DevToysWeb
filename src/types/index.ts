@@ -5,5 +5,5 @@ export type RouteOpts = {
   path: string;
   group?: string;
   component: React.ComponentType<any>;
-  icon: React.ComponentType<any>;
+  icon: React.ReactNode;
 }

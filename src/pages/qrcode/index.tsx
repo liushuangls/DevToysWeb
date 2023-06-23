@@ -1,4 +1,4 @@
-import { Button, Card, Input, message } from 'antd'
+import { Button, Card, Input, message, Space } from 'antd'
 import { memo, useRef, useState } from 'react'
 import { QRCodeCanvas } from 'qrcode.react'
 import { saveAs } from 'file-saver'
@@ -41,10 +41,10 @@ function QrCode () {
         </div>
         <div style={{ margin: '20px 0' }}>
           Size(128-512)：
-          <Input.Group compact>
+          <Space.Compact>
             <Input ref={sizeEl} defaultValue={size} style={{ width: '200px' }} />
             <Button onClick={handleSizeChange}>save</Button>
-          </Input.Group>
+          </Space.Compact>
         </div>
         <div>
           <Button onClick={exportQrCode}>export QR Code</Button>

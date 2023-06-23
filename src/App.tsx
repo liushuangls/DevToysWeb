@@ -1,5 +1,5 @@
-import { Layout, Menu } from 'antd'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Layout, Menu, MenuProps } from 'antd'
 import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined, LinkOutlined, Html5Outlined, UserOutlined } from '@ant-design/icons'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
@@ -20,58 +20,76 @@ const routes: RouteOpts[] = [
     title: 'All tools',
     path: '/',
     component: Index,
-    icon: HomeOutlined
+    icon: <HomeOutlined/>
   },
   {
     title: 'JSON',
     path: '/json',
     component: Json,
-    icon: AlignLeftOutlined,
+    icon: <AlignLeftOutlined/>,
     group: 'Formatters'
   },
   {
     title: 'Time',
     path: '/time',
     component: Time,
-    icon: ClockCircleOutlined,
+    icon: <ClockCircleOutlined/>,
     group: 'Converters'
   },
   {
     title: 'Base64',
     path: '/base64',
     component: Base64,
-    icon: ContainerOutlined,
+    icon: <ContainerOutlined/>,
     group: 'Encoders/Decoders'
   },
   {
     title: 'URL',
     path: '/url',
     component: URL,
-    icon: LinkOutlined,
+    icon: <LinkOutlined/>,
     group: 'Encoders/Decoders'
   },
   {
     title: 'HTML',
     path: '/html',
     component: Html,
-    icon: Html5Outlined,
+    icon: <Html5Outlined/>,
     group: 'Encoders/Decoders'
   },
   {
     title: 'JWT',
     path: '/jwt',
     component: JWT,
-    icon: UserOutlined,
+    icon: <UserOutlined/>,
     group: 'Encoders/Decoders'
   },
   {
     title: 'QR Code',
     path: '/qrcode',
     component: Qrcode,
-    icon: QrcodeOutlined,
+    icon: <QrcodeOutlined/>,
     group: 'Graphic'
   }
 ]
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+function getItem (
+  label: React.ReactNode,
+  key: React.Key,
+  icon?: React.ReactNode,
+  children?: MenuItem[],
+  type?: 'group' | 'divider' | ''
+): MenuItem {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type
+  } as MenuItem
+}
 
 function App () {
   const [current, setCurrent] = useState('home')
@@ -86,7 +104,7 @@ function App () {
     navigate(e.key)
   }
 
-  const renderMenu = () => {
+  const renderMenu = (): MenuProps['items'] => {
     const m: Record<string, RouteOpts[]> = {}
     routes.forEach(r => {
       let g = r.group
@@ -105,21 +123,11 @@ function App () {
       const rs = m[g]
       if (title === '/') {
         const r = rs[0]
-        return (
-          <Menu.Item key={r.path} icon={<r.icon />}>
-            {r.title}
-          </Menu.Item>
-        )
+        return getItem(r.title, r.path, r.icon)
       } else {
-        return (
-          <Menu.ItemGroup title={title} key={title}>
-            {rs.map(r => (
-              <Menu.Item key={r.path} icon={<r.icon />}>
-                {r.title}
-              </Menu.Item>
-            ))}
-          </Menu.ItemGroup>
-        )
+        return getItem(title, title, null, rs.map((r) => {
+          return getItem(r.title, r.path, r.icon)
+        }), 'group')
       }
     })
   }
@@ -130,10 +138,10 @@ function App () {
         <Menu
           onClick={handleClick}
           selectedKeys={[current]}
-          mode="vertical"
-        >
-          { renderMenu() }
-        </Menu>
+          defaultSelectedKeys={['/']}
+          mode='inline'
+          items={renderMenu()}
+        />
       </Layout.Sider>
       <Layout.Content style={{ backgroundColor: '#fff' }}>
         <Routes>

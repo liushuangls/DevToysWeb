@@ -60,9 +60,9 @@ function Time () {
       >
         <Card>
           Unix timestamp:
-          <Input.Group compact style={{ marginTop: '10px' }}>
+          <Space.Compact style={{ marginTop: '10px', marginLeft: '10px' }}>
             <Input
-              style={{ width: 'calc(100% - 200px)' }}
+              style={{ width: '200px' }}
               value={getShowTime()}
               onChange={handleInput}
             />
@@ -70,22 +70,22 @@ function Time () {
               <Select.Option value='s'>s</Select.Option>
               <Select.Option value='ms'>ms</Select.Option>
             </Select>
-          </Input.Group>
+          </Space.Compact>
           <div style={{ padding: '10px 0' }}>
-            <Button type="primary" onClick={() => setDate(new Date())} size={'small'}>
+            <Button type='default' onClick={() => setDate(new Date())} size={'small'}>
               now
             </Button>
           </div>
           <div>
             time string:
-            <Input.Group compact style={{ marginTop: '10px' }}>
+            <Space.Compact style={{ marginTop: '10px', marginLeft: '10px' }}>
               <Input
-                style={{ width: 'calc(100% - 200px)' }}
+                style={{ width: '200px' }}
                 value={dateStr}
                 onChange={(e) => setDateStr(e.target.value)}
               />
               <Button onClick={convertDateStr}>convert</Button>
-            </Input.Group>
+            </Space.Compact>
           </div>
         </Card>
         <Card>

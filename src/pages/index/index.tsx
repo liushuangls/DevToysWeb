@@ -1,4 +1,3 @@
-import Icon from '@ant-design/icons'
 import { Card } from 'antd'
 import React, { memo } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -27,8 +26,8 @@ const Index: React.FC<Props> = ({ routesOpts }) => {
               hoverable
               onClick={() => navigate(route.path)}
             >
-              <div>
-                <Icon component={route.icon} style={{ fontSize: '30px' }} />
+              <div style={{ fontSize: '30px' }}>
+                {route.icon}
               </div>
               <div style={{ marginTop: '10px', fontSize: '16px' }}>
                 {route.title}
