@@ -26,7 +26,7 @@ function Url () {
         <Col span={12} style={{ padding: '10px' }}>
           encoded: <CopyToClipboard value={raw} />
           <Input.TextArea
-            style={{ height: '90vh' }}
+            styles={{textarea: {minHeight: '90vh'}}}
             value={raw}
             onChange={handleRawChange}
           />
@@ -34,7 +34,7 @@ function Url () {
         <Col span={12} style={{ padding: '10px' }}>
           decoded: <CopyToClipboard value={encoded} />
           <Input.TextArea
-            style={{ height: '90vh' }}
+            styles={{textarea: {minHeight: '90vh'}}}
             value={encoded}
             onChange={handleEncodedChange}
           />

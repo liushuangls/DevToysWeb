@@ -27,7 +27,7 @@ function JWT () {
         <Col span={12} style={{ padding: '10px' }}>
           Encoded: <CopyToClipboard value={raw} />
           <Input.TextArea
-            style={{ height: '90vh' }}
+            styles={{textarea: {minHeight: '90vh'}}}
             value={raw}
             onChange={handleRawChange}
           />
@@ -35,7 +35,7 @@ function JWT () {
         <Col span={12} style={{ padding: '10px' }}>
           Decoded: <CopyToClipboard value={encoded} />
           <Input.TextArea
-            style={{ height: '90vh' }}
+            styles={{textarea: {minHeight: '90vh'}}}
             value={encoded}
           />
         </Col>

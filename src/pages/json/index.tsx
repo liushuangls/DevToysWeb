@@ -27,9 +27,8 @@ function Json () {
             onChange={(e) => renderJson(e.target.value, indent)}
             placeholder="json content"
             showCount={true}
-            style={{ height: '90vh' }}
-          >
-          </Input.TextArea>
+            styles={{textarea: {minHeight: '90vh'}}}
+          />
         </Col>
         <Col span={12} style={{ padding: '10px' }}>
           <Row justify='start' align='middle'>
@@ -50,13 +49,12 @@ function Json () {
             </Col>
           </Row>
           <div>
-
+            <Input.TextArea
+              value={target}
+              bordered={false}
+              styles={{textarea: {minHeight: '90vh'}}}
+            />
           </div>
-          <Input.TextArea
-            value={target}
-            bordered={false}
-            style={{ height: '90vh' }}
-          ></Input.TextArea>
         </Col>
       </Row>
     </div>
