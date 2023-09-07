@@ -1,88 +1,79 @@
-import React from 'react'
+import { useState } from 'react'
 import { Button, Col, Input, Row, Select } from 'antd'
 import CopyToClipboard from '../../components/copy'
 import { stringify, parse } from 'yaml'
-import { useMap } from 'react-use'
 
 function JsonYaml () {
-  const [data, { set, setAll }] = useMap({
-    json: '',
-    jsonIndex: 2,
-    jsonStatus: '',
-    yaml: '',
-    yamlIndent: 2,
-    yamlStatus: ''
-  })
+  const [json, setJson] = useState('')
+  const [jsonIndent, setJsonIndent] = useState(2)
+  const [jsonStatus, setJsonStatus] = useState('')
+  const [yaml, setYaml] = useState('')
+  const [yamlIndent, setYamlIndent] = useState(2)
+  const [yamlStatus, setYamlStatus] = useState('')
 
   const jsonChange = (val: string) => {
-    set('json', val)
+    setJson(val)
     try {
       const obj = JSON.parse(val)
-      set('yaml', stringify(obj, { indent: data.jsonIndex }))
-      set('jsonStatus', '')
+      setYaml(stringify(obj, { indent: jsonIndent }))
+      setJsonStatus('')
     } catch (e: any) {
-      set('jsonStatus', 'error')
+      setJsonStatus('error')
     }
   }
 
   const formatJson = (val: string, n: number) => {
-    val = val || data.json
-    n = n || data.jsonIndex
+    val = val || json
+    n = n || jsonIndent
     try {
-      setAll({
-        ...data,
-        json: JSON.stringify(JSON.parse(val), null, n),
-        jsonStatus: ''
-      })
+      setJson(JSON.stringify(JSON.parse(val), null, n))
+      setJsonStatus('')
     } catch (e: any) {
-      set('json', val)
-      set('jsonStatus', 'error')
+      setJson(val)
+      setJsonStatus('error')
     }
   }
 
   const changeJsonIndent = (n: number) => {
-    set('jsonIndex', n)
-    formatJson(data.json, n)
+    setJsonIndent(n)
+    formatJson(json, n)
   }
 
   const yamlChange = (val: string) => {
-    set('yaml', val)
+    setYaml(val)
     try {
       const obj = parse(val)
-      set('json', JSON.stringify(obj, null, data.jsonIndex))
-      set('yamlStatus', '')
+      setJson(JSON.stringify(obj, null, jsonIndent))
+      setYamlStatus('')
     } catch (error) {
-      set('yamlStatus', 'error')
+      setJsonStatus('error')
     }
   }
 
   const formatYaml = (val: string, n: number) => {
-    val = val || data.yaml
-    n = n || data.yamlIndent
+    val = val || yaml
+    n = n || yamlIndent
     try {
-      setAll({
-        ...data,
-        yaml: stringify(parse(val), { nullStr: '', indent: n }),
-        yamlStatus: ''
-      })
+      setYaml(stringify(parse(val), { nullStr: '', indent: n }))
+      setYamlStatus('')
     } catch (error) {
-      set('yaml', val)
-      set('yamlStatus', 'error')
+      setYaml(val)
+      setYamlStatus('error')
     }
   }
 
   const changeYamlIndent = (n: number) => {
-    set('yamlIndent', n)
-    formatYaml(data.yaml, n)
+    setYamlIndent(n)
+    formatYaml(yaml, n)
   }
 
   return (
     <div className="json-yaml">
       <Row>
         <Item
-          value={data.json}
-          status={data.jsonStatus}
-          defaultIndent={data.jsonIndex}
+          value={json}
+          status={jsonStatus}
+          defaultIndent={jsonIndent}
           indentSelects={[0, 2, 4]}
           placeholder='JSON content'
           onIndentChange={changeJsonIndent}
@@ -90,9 +81,9 @@ function JsonYaml () {
           onFormat={() => formatJson('', 0)}
         />
         <Item
-          value={data.yaml}
-          status={data.yamlStatus}
-          defaultIndent={data.yamlIndent}
+          value={yaml}
+          status={yamlStatus}
+          defaultIndent={yamlIndent}
           indentSelects={[2, 4]}
           placeholder='YAML content'
           onIndentChange={changeYamlIndent}
