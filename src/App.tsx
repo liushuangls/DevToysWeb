@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Layout, Menu, MenuProps } from 'antd'
-import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined, LinkOutlined, Html5Outlined, UserOutlined, BgColorsOutlined, FieldStringOutlined, NodeIndexOutlined } from '@ant-design/icons'
+import { AlignLeftOutlined, ClockCircleOutlined, ContainerOutlined, HomeOutlined, QrcodeOutlined, LinkOutlined, Html5Outlined, UserOutlined, BgColorsOutlined, FieldStringOutlined, NodeIndexOutlined, RetweetOutlined } from '@ant-design/icons'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
 import './App.css'
@@ -17,6 +17,7 @@ import Qrcode from './pages/qrcode'
 import ColorPick from './pages/color'
 import RegexTester from './pages/regex'
 import Hash from './pages/hash'
+import JSONYAML from './pages/json_yaml'
 
 const routes: RouteOpts[] = [
   {
@@ -26,10 +27,17 @@ const routes: RouteOpts[] = [
     icon: <HomeOutlined/>
   },
   {
-    title: 'Time',
+    title: 'Timestamp',
     path: '/time',
     component: Time,
     icon: <ClockCircleOutlined/>,
+    group: 'Converters'
+  },
+  {
+    title: 'JSON <> YAML',
+    path: '/json_yaml',
+    component: JSONYAML,
+    icon: <RetweetOutlined/>,
     group: 'Converters'
   },
   {

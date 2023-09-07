@@ -22,7 +22,7 @@ const Index: React.FC<Props> = ({ routesOpts }) => {
           return (
             <Card
               key={route.path}
-              style={{ padding: '20px 10px', margin: '15px', textAlign: 'center', width: '160px' }}
+              style={{ padding: '20px 10px', margin: '15px', textAlign: 'center', width: '180px' }}
               hoverable
               onClick={() => navigate(route.path)}
             >
