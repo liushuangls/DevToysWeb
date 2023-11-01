@@ -10,7 +10,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "antd": "^5.10.1",
-    "crypto-js": "^4.1.1",
+    "crypto-js": "^4.2.0",
     "date-fns": "^2.30.0",
     "file-saver": "^2.0.5",
     "jwt-decode": "^3.1.2",
