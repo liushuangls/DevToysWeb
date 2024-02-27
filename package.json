@@ -38,6 +38,6 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-unused-imports": "^2.0.0",
     "typescript": "^5.2.2",
-    "vite": "^4.4.12"
+    "vite": "^4.5.2"
   }
 }
